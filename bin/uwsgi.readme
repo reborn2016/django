@@ -1,0 +1,24 @@
+Tutorial:
+    https://uwsgi.readthedocs.org/en/latest/tutorials/Django_and_nginx.html
+    Best Practice:
+        the web client <-> the web server <-> the socket <-> uwsgi <-> Django
+        web client: web browser
+        the web server: nginx
+        the socket:  ??
+        uwsgi
+        Django
+
+uwsgi --http :8081 --wsgi-file uwsgitest.py
+http://127.0.0.1:8081/
+
+
+django with uwsgi:
+uwsgi --http :8000 --module mysite.wsgi
+http://127.0.0.1:8000/polls/
+
+
+
+uwsgi --socket :8001 --wsgi-file uwsgitest.py
+the web client <-> the web server <-> the socket <-> uWSGI <-> Python
+
+

@@ -1,0 +1,73 @@
+=================================Tutorial one=========================
+==create project==
+	django-admin startproject mysite
+==create apyth
+	cd mysite; python manage.py startapp polls
+==start server==
+	cd mysite; python manage.py runserver 0.0.0.0:8000
+
+
+==url==
+    1. from django.conf.urls import url, include
+    2. from django.contrib import admin
+    2. url( regex, views, name)
+    3. url(regex, urls) # include, admin.site.urls
+
+
+==views==
+    1. from django.http import HttpResponse
+    2. from django.shortcuts import render
+    3. def index(request):  
+    	return HttpResponse( 'hello world")
+
+
+
+ =============================Tutorial Two=============================
+    1. set up db
+         mysite/setting.py
+         	DATABASES = { [ ENGINE : django.db.backends.mysql,  NAME: USER, PASSWORD, HOST, PORT
+         	]
+         	 }
+         admin, contenttypes, auth, session
+    2. python mange.py migrate
+
+    3. self defined database: INSTALLED_APPS  'polls.app.PollsConfig'
+        polls/models.py  from django.db import models
+        python manage.py makemigrations polls
+        python manage.py sqlmigrate polls 0001
+        python mange.py migrate
+
+    4. shell test
+        python manage.py shell
+        import django
+        django.setup()
+
+
+ ================================Admin======================================
+ 1. python manage.py createsuperuser
+     http://127.0.0.1:8000/admin/
+  2. register polls/admin.py
+      form django.contrib import admin
+      admin.urls.register(Question)
+
+
+
+  ================================more views==================================
+  url(r'(?P<question_id>[0-9]+)')
+  from django.template import loader
+  template = loader.get_template(...)
+  template.render(context, request)
+
+  ?? namespade app_name in urls.py, in template file {{ }} , I knew it
+
+
+  ===============================more more views===============================
+
+
+================================Test===========================================
+python manage.py test polls 
+
+
+
+
+  
